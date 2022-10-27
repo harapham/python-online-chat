@@ -1,1 +1,1 @@
-# online_chat_python
+# python-online-chat
