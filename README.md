@@ -1,8 +1,6 @@
 # python-chatroom
 A Python TCP chatroom by Tkinter
 
-Final project of [NETWORK MANAGEMENT 2021](http://class-qry.acad.ncku.edu.tw/syllabus/online_display.php?syear=0109&sem=2&co_no=R750600&class_code=)
-
 ## Usage
 
 Activate chat server
