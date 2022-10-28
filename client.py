@@ -68,18 +68,18 @@ root1.mainloop()
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((IP, PORT)) #kết nối với server
-if user:
+if user=='/noname':
+    # user name chế độ ẩn danh
+    s.send('no'.encode())
+else:
     # gửi user name
     s.send(user.encode())
-else:
-    # no user name
-    s.send('no'.encode())
 
 # nếu không có username thì đặt username là 'ip:port'
 addr = s.getsockname()  # lấy ip và username
-addr = addr[0] + ':' + str(addr[1])
-if user == '':
-    user = addr
+#addr = addr[0] + ':' + str(addr[1])
+if user == '/noname':
+    user = 'no name'+'('+str(addr[1])+')'
 
 # Chat room GUI
 root = tkinter.Tk()

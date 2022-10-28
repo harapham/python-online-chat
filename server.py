@@ -9,9 +9,9 @@ import sys
 
 IP = ''
 PORT = 50007
-queue = queue.Queue()                   # lưu trữ tin nhắn của user trong hàng đợi
-users = []                              # lưu thông tinh user đang hoạt động  [conn, user, addr]
-lock = threading.Lock()                 # multitreading lock (khóa đa luồng)
+queue = queue.Queue()            # lưu trữ tin nhắn của user trong hàng đợi
+users = []                       # lưu thông tinh user đang hoạt động  [conn, user, addr]
+lock = threading.Lock()          # multitreading lock (khóa đa luồng)
 
 
 #thêm user mới vào danh sách user đang hoạt động
@@ -50,7 +50,7 @@ class ChatServer(threading.Thread):
                 user = '' + user + '_2'
 
         if user == 'no':
-            user = addr[0] + ':' + str(addr[1])
+            user = 'no name'+'('+str(addr[1])+')'
         users.append((conn, user, addr))
         # in ra tên user mới
         print(' New connection:', addr, ':', user, end='')
