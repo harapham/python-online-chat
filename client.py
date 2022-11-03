@@ -15,12 +15,12 @@ listbox1 = ''
 ii = 0
 # user list
 users = []
-chat = '------Group chat-------'
+chat = '------GROUP CHAT-------'
 # cửa sổ đăng nhập
 root1 = tkinter.Tk()
 root1.title('Log in')
-root1['height'] = 110
-root1['width'] = 270
+root1['height'] = 170
+root1['width'] = 300
 root1.resizable(0, 0)
 
 # ip và port
@@ -30,18 +30,21 @@ User = tkinter.StringVar()
 User.set('')
 
 # server label
-labelIP = tkinter.Label(root1, text='Server address')
-labelIP.place(x=20, y=10, width=100, height=20)
+labeYC = tkinter.Label(root1,text='Vui lòng nhập username!',font=('Arial',10,'italic'))
+labeYC.place(x=35,y=8,width=250,height=30)
+
+labelIP = tkinter.Label(root1, text='Server address',font=('Barlow Condensed Medium',12))
+labelIP.place(x=35, y=40, width=100, height=20)
 
 entryIP = tkinter.Entry(root1, width=80, textvariable=IP1)
-entryIP.place(x=120, y=10, width=130, height=20)
+entryIP.place(x=140, y=40, width=130, height=30)
 
 # username label
-labelUser = tkinter.Label(root1, text='Username')
-labelUser.place(x=30, y=40, width=80, height=20)
+labelUser = tkinter.Label(root1, text='Username',font=('Barlow Condensed Medium',12))
+labelUser.place(x=22, y=80, width=100, height=20)
 
 entryUser = tkinter.Entry(root1, width=80, textvariable=User)
-entryUser.place(x=120, y=40, width=130, height=20)
+entryUser.place(x=140, y=80, width=130, height=30)
 
 
 # login button
@@ -61,8 +64,8 @@ def login(*args):
 
 # tạo chức năng đăng nhập trong button log in
 root1.bind('<Return>', login)   ## bấm button bằng nhấn enter
-but = tkinter.Button(root1, text='Log in', command=login)
-but.place(x=100, y=70, width=70, height=30)
+but = tkinter.Button(root1, text='Log in',font=('Barlow Condensed Medium',12,'bold'), command=login)
+but.place(x=110, y=120, width=90, height=40)
 
 root1.mainloop()
 
@@ -96,7 +99,7 @@ listbox.tag_config('red', foreground='#FF0000')
 listbox.tag_config('blue', foreground='#2365a6')
 listbox.tag_config('green', foreground='#007500')
 listbox.tag_config('black', foreground='#000000')
-listbox.insert(tkinter.END, 'Welcome to the chat room!', '#000000')
+listbox.insert(tkinter.END, 'Welcome to the chat room!','#000000')
 
 # Emoji
 # giả sử trước có 4 emoji
@@ -104,14 +107,25 @@ b1 = ''
 b2 = ''
 b3 = ''
 b4 = ''
-# emoji (size : 70x70)
-emoji_1 = tkinter.PhotoImage(file='./emoji/thinking-face.png')
-emoji_2 = tkinter.PhotoImage(file='./emoji/sunglasses.png')
-emoji_3 = tkinter.PhotoImage(file='./emoji/rolling-eyes.png')
-emoji_4 = tkinter.PhotoImage(file='./emoji/money-mouth-face.png')
-
+b5 = ''
+b6 = ''
+b7 = ''
+b8 = ''
+b9 = ''
+b0 = ''
+# emoji (size : 36x36)
+emoji_1 = tkinter.PhotoImage(file='./emoji/1.png')
+emoji_2 = tkinter.PhotoImage(file='./emoji/2.png')
+emoji_3 = tkinter.PhotoImage(file='./emoji/3.png')
+emoji_4 = tkinter.PhotoImage(file='./emoji/4.png')
+emoji_5 = tkinter.PhotoImage(file='./emoji/5.png')
+emoji_6 = tkinter.PhotoImage(file='./emoji/6.png')
+emoji_7 = tkinter.PhotoImage(file='./emoji/7.png')
+emoji_8 = tkinter.PhotoImage(file='./emoji/8.png')
+emoji_9 = tkinter.PhotoImage(file='./emoji/9.png')
+emoji_0 = tkinter.PhotoImage(file='./emoji/0.png')
 # tạo dict emoji
-dict = {'aa**': emoji_1, 'bb**': emoji_2, 'cc**': emoji_3, 'dd**': emoji_4}
+dict = {'e1': emoji_1, 'e2': emoji_2, 'e3': emoji_3, 'e4': emoji_4, 'e5': emoji_5, 'e6': emoji_6, 'e7': emoji_7, 'e8': emoji_8, 'e9': emoji_9, 'e0': emoji_0}
 ee = 0  #  đánh dấu xem ô emoji có được mở hay không
 
 
@@ -125,28 +139,39 @@ def mark(exp):
     b2.destroy()
     b3.destroy()
     b4.destroy()
+    b5.destroy()
+    b6.destroy()
+    b7.destroy()
+    b8.destroy()
+    b9.destroy()
+    b0.destroy()
     ee = 0
 
 
 # hàm tạo chức năng của emoji
 def bb1():
-    mark('aa**')
-
-
+    mark('e1')
 def bb2():
-    mark('bb**')
-
-
+    mark('e2')
 def bb3():
-    mark('cc**')
-
-
+    mark('e3')
 def bb4():
-    mark('dd**')
-
+    mark('e4')
+def bb5():
+    mark('e5')
+def bb6():
+    mark('e6')    
+def bb7():
+    mark('e7')
+def bb8():
+    mark('e8')
+def bb9():
+    mark('e9')
+def bb0():
+    mark('e0')
 # tạo button cho từng emoji
 def express():
-    global b1, b2, b3, b4, ee
+    global b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, ee
     if ee == 0:
         ee = 1
         b1 = tkinter.Button(root, command=bb1, image=emoji_1,
@@ -157,21 +182,44 @@ def express():
                             relief=tkinter.FLAT, bd=0)
         b4 = tkinter.Button(root, command=bb4, image=emoji_4,
                             relief=tkinter.FLAT, bd=0)
-
+        b5 = tkinter.Button(root, command=bb5, image=emoji_5,
+                            relief=tkinter.FLAT, bd=0)
+        b6 = tkinter.Button(root, command=bb6, image=emoji_6,
+                            relief=tkinter.FLAT, bd=0)
+        b7 = tkinter.Button(root, command=bb7, image=emoji_7,
+                            relief=tkinter.FLAT, bd=0)
+        b8 = tkinter.Button(root, command=bb8, image=emoji_8,
+                            relief=tkinter.FLAT, bd=0)
+        b9 = tkinter.Button(root, command=bb9, image=emoji_9,
+                            relief=tkinter.FLAT, bd=0)    
+        b0 = tkinter.Button(root, command=bb0, image=emoji_0,
+                            relief=tkinter.FLAT, bd=0)                
         b1.place(x=5, y=248)
-        b2.place(x=75, y=248)
-        b3.place(x=145, y=248)
-        b4.place(x=215, y=248)
+        b2.place(x=41, y=248)
+        b3.place(x=77, y=248)
+        b4.place(x=113, y=248)
+        b5.place(x=149, y=248)
+        b6.place(x=5, y=284)
+        b7.place(x=41, y=284)
+        b8.place(x=77, y=284)
+        b9.place(x=113, y=284)
+        b0.place(x=149, y=284)
     else:
         ee = 0
         b1.destroy()
         b2.destroy()
         b3.destroy()
         b4.destroy()
+        b5.destroy()
+        b6.destroy()
+        b7.destroy()
+        b8.destroy()
+        b9.destroy()
+        b0.destroy()
 
 
 # tạo emoji button
-eBut = tkinter.Button(root, text='emoji', command=express)
+eBut = tkinter.Button(root, text='emoji',font=('Barlow Condensed Medium',12), command=express)
 eBut.place(x=5, y=320, width=60, height=30)
 
 
@@ -192,8 +240,8 @@ def users():
 
 
 # button của user list đang hoạt động 
-button1 = tkinter.Button(root, text='Online users', command=users)
-button1.place(x=485, y=320, width=90, height=30)
+button1 = tkinter.Button(root, text='Online users',font=('Barlow Condensed Medium',12), command=users)
+button1.place(x=480, y=320, width=95, height=30)
 
 # Input Text box
 a = tkinter.StringVar()
@@ -203,16 +251,14 @@ entry.place(x=5, y=350, width=570, height=40)
 
 # gửi message
 def send(*args):
-    users.append('------Group chat-------')
+    users.append('------GROUP CHAT-------')
     print(chat)
     # Nếu user nhận tin không có trong users, thông báo không ai có thể trò chuyện với bạn
     if chat not in users:
         tkinter.messagebox.showerror(
             'Send error', message='There is nobody to talk to!')
         return
-    #     
-    if chat == 'Robot':
-        print('Robot')
+
     #nếu user nhận tin là chính mình thì thông báo không thể tự nói chuyện với chính mình
     if chat == user:
         tkinter.messagebox.showerror(
@@ -225,7 +271,7 @@ def send(*args):
 
 
 # Send message button
-button = tkinter.Button(root, text='Send', command=send)
+button = tkinter.Button(root, text='Send',font=('Barlow Condensed Medium',12), command=send)
 button.place(x=515, y=353, width=60, height=30)
 root.bind('<Return>', send)
 
@@ -239,7 +285,7 @@ def private(*args):
     if index > 0:
         chat = listbox1.get(index)
         # Thay đổi nhắn tin nhóm thành nhắn tin riêng tư
-        if chat == '------Group chat-------':
+        if chat == '------GROUP CHAT-------':
             root.title(user)
             return
         ti = user + '  ->  ' + chat
@@ -265,7 +311,7 @@ def recv():
             number = ('   Users online: ' + str(len(data)))
             listbox1.insert(tkinter.END, number)
             listbox1.itemconfig(tkinter.END, fg='green', bg="#f0f0ff")
-            listbox1.insert(tkinter.END, '------Group chat-------')
+            listbox1.insert(tkinter.END, '------GROUP CHAT-------')
             listbox1.itemconfig(tkinter.END, fg='green')
             for i in range(len(data)):
                 listbox1.insert(tkinter.END, (data[i]))
@@ -275,11 +321,11 @@ def recv():
             data1 = data[0].strip()  # nội dung tin nhắn
             data2 = data[1]  # user name
             data3 = data[2]  # chat (user nhận tin)
-            if 'INVITE' in data1:
+            '''if 'INVITE' in data1:
                 if data3 == '------Group chat-------':
                     tkinter.messagebox.showerror(
                         'Connect error', message='Group video chat is not supported!')
-                continue
+                continue'''
             markk = data1.split('：')[1]
             # Xác định xem đó có phải là 1 ảnh không
             pic = markk.split('#')
@@ -287,7 +333,7 @@ def recv():
             # kiểm tra xem emoji có trong dict không
             if (markk in dict) or pic[0] == '``':
                 data4 = '\n' + data2 + '：'  
-                if data3 == '------Group chat-------':
+                if data3 == '------GROUP CHAT-------':
                     if data2 == user:
                         # Nếu đó là chính user, chuyển phông chữ thành màu xanh nước biển
                         listbox.insert(tkinter.END, data4, 'blue')
@@ -302,7 +348,7 @@ def recv():
             # cài đặt màu chữ
             else:
                 data1 = '\n' + data1
-                if data3 == '------Group chat-------':
+                if data3 == '------GROUP CHAT-------':
                     if data2 == user:
                         # Nếu đó là chính user, chuyển phông chữ thành màu xanh nước biển
                         listbox.insert(tkinter.END, data1, 'blue')

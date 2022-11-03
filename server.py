@@ -29,13 +29,10 @@ class ChatServer(threading.Thread):
     # hàm khởi tạo
     def __init__(self, port):
         threading.Thread.__init__(self)
-        # self.setDaemon(True)
         self.ADDR = ('', port)
-        # self.PORT = port
         os.chdir(sys.path[0])
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  #tạo socket mới với ip4 và tcp/ip
-        # self.conn = None
-        # self.addr = None
+
 
     # hàm nhận tin nhắn từ client
     def tcp_connect(self, conn, addr):
