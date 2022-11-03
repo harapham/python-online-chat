@@ -321,30 +321,23 @@ def recv():
             data1 = data[0].strip()  # nội dung tin nhắn
             data2 = data[1]  # user name
             data3 = data[2]  # chat (user nhận tin)
-            '''if 'INVITE' in data1:
-                if data3 == '------Group chat-------':
-                    tkinter.messagebox.showerror(
-                        'Connect error', message='Group video chat is not supported!')
-                continue'''
+
             markk = data1.split('：')[1]
-            # Xác định xem đó có phải là 1 ảnh không
-            pic = markk.split('#')
-            # xác định xem pic có phải là 1 emoji không
             # kiểm tra xem emoji có trong dict không
-            if (markk in dict) or pic[0] == '``':
+            if (markk in dict) :
                 data4 = '\n' + data2 + '：'  
                 if data3 == '------GROUP CHAT-------':
                     if data2 == user:
                         # Nếu đó là chính user, chuyển phông chữ thành màu xanh nước biển
                         listbox.insert(tkinter.END, data4, 'blue')
+                        listbox.image_create(tkinter.END, image=dict[markk])
                     else:
-                        listbox.insert(tkinter.END, data4,
-                                       'green')
+                        listbox.insert(tkinter.END, data4,'green')
+                        listbox.image_create(tkinter.END, image=dict[markk])
                 elif data2 == user or data3 == user:  # nhắn tin là riêng tư
                     listbox.insert(tkinter.END, data4, 'red')
-                if pic[0] != '``':
-                    # gửi emoji vào chatroom
                     listbox.image_create(tkinter.END, image=dict[markk])
+
             # cài đặt màu chữ
             else:
                 data1 = '\n' + data1
@@ -355,8 +348,7 @@ def recv():
                     else:
                         listbox.insert(tkinter.END, data1,
                                        'green')
-                    if len(data) == 4:
-                        listbox.insert(tkinter.END, '\n' + data[3], 'black')
+
                 elif data2 == user or data3 == user:  # tin nhắn riêng tư
                     listbox.insert(tkinter.END, data1, 'red')
             listbox.see(tkinter.END)  # hiển thị cuối cùng
