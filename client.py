@@ -101,6 +101,7 @@ listbox.tag_config('green', foreground='#007500')
 listbox.tag_config('black', foreground='#000000')
 listbox.insert(tkinter.END, 'Welcome to the chat room!','#000000')
 
+listbox.configure(state='disabled')
 # Emoji
 # giả sử trước có 4 emoji
 b1 = ''
@@ -329,14 +330,23 @@ def recv():
                 if data3 == '------GROUP CHAT-------':
                     if data2 == user:
                         # Nếu đó là chính user, chuyển phông chữ thành màu xanh nước biển
+                        listbox.configure(state='normal')
                         listbox.insert(tkinter.END, data4, 'blue')
                         listbox.image_create(tkinter.END, image=dict[markk])
+                        listbox.yview('end')
+                        listbox.config(state='disabled')
                     else:
+                        listbox.configure(state='normal')
                         listbox.insert(tkinter.END, data4,'green')
                         listbox.image_create(tkinter.END, image=dict[markk])
+                        listbox.yview('end')
+                        listbox.config(state='disabled')
                 elif data2 == user or data3 == user:  # nhắn tin là riêng tư
+                    listbox.configure(state='normal')
                     listbox.insert(tkinter.END, data4, 'red')
                     listbox.image_create(tkinter.END, image=dict[markk])
+                    listbox.yview('end')
+                    listbox.config(state='disabled')
 
             # cài đặt màu chữ
             else:
@@ -344,13 +354,22 @@ def recv():
                 if data3 == '------GROUP CHAT-------':
                     if data2 == user:
                         # Nếu đó là chính user, chuyển phông chữ thành màu xanh nước biển
+                        listbox.configure(state='normal')
                         listbox.insert(tkinter.END, data1, 'blue')
+                        listbox.yview('end')
+                        listbox.config(state='disabled')
                     else:
+                        listbox.configure(state='normal')
                         listbox.insert(tkinter.END, data1,
                                        'green')
+                        listbox.yview('end')
+                        listbox.config(state='disabled')
 
                 elif data2 == user or data3 == user:  # tin nhắn riêng tư
+                    listbox.configure(state='normal')
                     listbox.insert(tkinter.END, data1, 'red')
+                    listbox.yview('end')
+                    listbox.config(state='disabled')
             listbox.see(tkinter.END)  # hiển thị cuối cùng
 
 
